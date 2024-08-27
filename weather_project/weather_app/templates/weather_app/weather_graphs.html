@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Graphs for {{ city }}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+      .graph-container {
+        margin-bottom: 40px;
+      }
+      form {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      input[type="text"],
+      input[type="date"] {
+        padding: 5px;
+        margin: 5px;
+      }
+      input[type="submit"] {
+        padding: 5px 15px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Weather Data for {{ city }}</h1>
+
+    <form method="get">
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city" value="{{ city }}" required />
+
+      <label for="start_date">From:</label>
+      <input
+        type="date"
+        name="start_date"
+        id="start_date"
+        value="{{ start_date }}"
+        required
+      />
+
+      <label for="end_date">To:</label>
+      <input
+        type="date"
+        name="end_date"
+        id="end_date"
+        value="{{ end_date }}"
+        required
+      />
+
+      <input type="submit" value="Update Graphs" />
+    </form>
+
+    <div class="graph-container">
+      <h2>Temperature Graph</h2>
+      <div>{{ graph_temp|safe }}</div>
+    </div>
+
+    <div class="graph-container">
+      <h2>Humidity Graph</h2>
+      <div>{{ graph_humidity|safe }}</div>
+    </div>
+
+    <div class="graph-container">
+      <h2>Wind Speed Graph</h2>
+      <div>{{ graph_windspeed|safe }}</div>
+    </div>
+  </body>
+</html>
